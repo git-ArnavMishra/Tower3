@@ -10,6 +10,7 @@ class Block extends BaseClass {
     
     console.log(this.body.speed);
     //push();
+    
     if(this.body.speed<3){
     
       super.display();
