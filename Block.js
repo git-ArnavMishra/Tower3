@@ -6,7 +6,7 @@ class Block extends BaseClass {
       this.visible = true;
     }
     
-  display(){
+  display(){ 
     
     console.log(this.body.speed);
     //push();
