@@ -7,6 +7,8 @@ var ground;
 var stand;
 var  slingShot;
 var  polygon;
+var bg;
+var backgroundImg;
 
 var  block1;
 var  block2;
@@ -31,6 +33,10 @@ function setup() {
   engine = Engine.create();
   
   world = engine.world;
+  getBackgroundImg();
+  bg = "Sprites/night.jpeg";
+  backgroundImg = loadImage(bg);
+  //background(bg);
   polygon= new Polygon(200,200);
   ground = new Ground(400,380,800,20);
   stand = new Ground(400,290,300,20);
@@ -55,10 +61,12 @@ function setup() {
   //top;;
   block16 = new Block(390,155,30,40);;
   slingShot = new SlingShot(polygon.body,{x:180, y:200});
+
 }
 
 function draw() {
-  background(255,255,255); 
+  //background(255,255,255); 
+   background(backgroundImg);
   Engine.update(engine); 
   ground.display();
   stand.display();
@@ -99,11 +107,32 @@ function keyPressed(){
     slingShot.attach(this.polygon.body);
   }
 }
-function getTime(){
-  var response = fetch("https://worldtimeapi.org/api/timezone/Asia/Tokyo")
-}
-async function getTime(){
-  var response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Tokyo")
-  var responseJSON = await response.json();
-  console.log(responseJSON);
-}
+//function getTime(){
+  //var response = fetch("https://worldtimeapi.org/api/timezone/Asia/Tokyo")
+//}
+//async function getTime(){
+  //var response = await fetch("https://worldtimeapi.org/api/timezone/Asia/Tokyo")
+  //var responseJSON = await response.json();
+  //console.log(responseJSON);
+//}
+
+async function getBackgroundImg(){
+   var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+   var responseJSON = await response.json();
+  
+   //console.log(responseJSON);
+   var datetime = responseJSON.datetime;
+   var hour = datetime.slice(11,13);
+   console.log(hour);
+  
+   if(hour>=0600 && hour<=1900){
+       bg = "Sprites/day.jpeg";
+   }
+   else{
+       bg = "Sprites/night.jpeg";
+   }
+   //console.log(bg);
+   //backgroundImg = loadImage(bg);
+   //console.log(backgroundImg);
+ }
+ 
