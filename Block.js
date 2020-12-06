@@ -1,7 +1,7 @@
 class Block extends BaseClass {
     constructor(x, y, width, height){
       super(x,y,width,height);
-      this.image = loadImage("sprites/box.png");
+      this.image = loadImage("Sprites/Box.png");
       this.visibility = 255;
       this.visible = true;
     }
@@ -20,7 +20,7 @@ class Block extends BaseClass {
     else{
       World.remove(world, this.body);
       tint(255,this.visibility);
-       this.image = loadImage("sprites/box.png");
+       this.image = loadImage("Sprites/box.png");
       //this.image(this.image, this.body.position.x, this.body.position.y, 50, 50);
 
 
