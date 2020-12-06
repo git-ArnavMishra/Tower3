@@ -11,7 +11,7 @@ class BaseClass{
         
         this.width = width;
         this.height = height;
-        this.image = loadImage("Sprites/box.png");
+        this.image = loadImage("Sprites/box.jpeg");
         World.add(world, this.body);
       }
       display(){
